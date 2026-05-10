@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className="group flex items-center justify-between rounded-[24px] bg-white/5 px-4 py-4 text-sm font-black uppercase tracking-[0.16em] text-white/90 transition-colors hover:bg-white hover:text-[#003358]"
+                  className="group flex items-center justify-between rounded-[24px]  px-4 py-4 text-sm font-black uppercase tracking-[0.16em] text-white/90 transition-colors hover:bg-white hover:text-[#003358]"
                 >
                   <span>{link.name}</span>
                   <FaArrowRightLong className="text-[#00a3cc] transition-transform group-hover:translate-x-1" />
