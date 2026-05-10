@@ -1,6 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaCreditCard, FaLock, FaArrowRightLong, FaHandHoldingHeart } from "react-icons/fa6";
+import {
+  FaCreditCard,
+  FaLock,
+  FaArrowRightLong,
+  FaHandHoldingHeart,
+  FaShieldHalved,
+} from "react-icons/fa6";
 
 const DonatePage: React.FC = () => {
   const donorBoxUrl = "https://donorbox.org/offordforclerk";
@@ -12,131 +18,211 @@ const DonatePage: React.FC = () => {
     { amount: "$250", label: "Champion" },
   ];
 
+  const trustItems = [
+    {
+      icon: <FaShieldHalved size={24} />,
+      title: "Secure Transfer",
+      text: "Donations are processed through Donorbox using secure encrypted payment handling.",
+      tone: "bg-[#003358] text-[#00a3cc]",
+    },
+    {
+      icon: <FaLock size={24} />,
+      title: "Privacy Protected",
+      text: "Your information is used only for campaign compliance, reporting, and required communication.",
+      tone: "bg-[#00a3cc] text-[#003358]",
+    },
+    {
+      icon: <FaCreditCard size={24} />,
+      title: "Flexible Giving",
+      text: "Donate using major credit cards and supported digital payment options.",
+      tone: "bg-[#dff7ff] text-[#003358]",
+    },
+  ];
+
   return (
-    <div className="bg-white min-h-screen text-[#003358] font-sans selection:bg-[#00a3cc] selection:text-white flex flex-col">
-      
-      {/* HEADER: High-Impact Brutalist */}
-      <header className="pt-32 pb-24 px-6 bg-[#003358] text-white border-b-[16px] border-[#00a3cc] relative overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="inline-block bg-[#00a3cc] px-6 py-2 mb-8"
+    <div className="min-h-screen bg-white font-sans text-[#003358] selection:bg-[#00a3cc] selection:text-white">
+      <header className="relative overflow-hidden border-b-[10px] border-[#00a3cc] bg-[#003358] px-6 pb-16 pt-24 text-white md:pb-24 md:pt-32">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+            className="inline-flex rounded-full bg-[#00a3cc] px-5 py-2"
           >
-            <span className="text-[#003358] font-black text-sm uppercase tracking-[0.5em]">Action Center</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.35em] text-[#003358]">
+              Action Center
+            </span>
           </motion.div>
-          <h1 className="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.8] mb-4">
-            Power the <br /> <span className="text-[#00a3cc]">Change.</span>
-          </h1>
-          <p className="text-xl md:text-2xl font-bold uppercase tracking-widest text-[#00a3cc]/80">
-            Dallas County Clerk Democratic Primary Runoff
-          </p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.08, ease: "easeOut" }}
+            className="mt-8 max-w-5xl"
+          >
+            <h1 className="text-5xl font-black uppercase leading-[0.85] tracking-tight sm:text-6xl md:text-8xl lg:text-9xl">
+              Power The
+              <br />
+              <span className="text-[#00a3cc]">Change.</span>
+            </h1>
+
+            <p className="mt-5 max-w-3xl text-sm font-black uppercase tracking-[0.22em] text-[#7eddf4] sm:text-base md:text-lg">
+              Dallas County Clerk Democratic Primary Runoff
+            </p>
+          </motion.div>
         </div>
-        {/* Background Decorative Text */}
-        <span className="absolute bottom-0 right-0 text-[20rem] font-black text-white/5 leading-none select-none -mb-20">2026</span>
+
+        <div className="pointer-events-none absolute bottom-0 right-0 select-none text-[7rem] font-black leading-none text-white/5 sm:text-[10rem] md:text-[14rem] lg:text-[18rem]">
+          2026
+        </div>
       </header>
 
-      <main className="max-w-6xl mx-auto w-full px-6 -mt-16 relative z-20 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border-[12px] border-[#003358] bg-white shadow-[30px_30px_0px_#00a3cc]">
-          
-          {/* LEFT COLUMN: The Strategy */}
-          <div className="lg:col-span-7 p-10 md:p-16 space-y-12 border-b-2 lg:border-b-0 lg:border-r-2 border-slate-100">
-            <div className="space-y-6">
-              <h2 className="text-4xl font-black uppercase tracking-tighter text-[#003358]">
-                Every Dollar <span className="text-[#00a3cc]">Counts.</span>
-              </h2>
-              <p className="text-slate-600 font-bold uppercase tracking-widest text-xs leading-loose italic">
-                "Your investment allows us to reach voters across every precinct in Dallas County. 
-                Together, we are modernizing the clerk’s office for the next generation."
-              </p>
+      <main className="mx-auto max-w-7xl px-6 py-8 md:py-12">
+        <div className="grid gap-6 lg:grid-cols-12">
+          <section className="rounded-[32px] bg-[#f7fcff] p-6 sm:p-8 md:p-10 lg:col-span-7 xl:p-12">
+            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-start">
+              <div>
+                <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#007fa0]">
+                  Invest In The Campaign
+                </p>
+                <h2 className="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl">
+                  Every Dollar
+                  <span className="text-[#00a3cc]"> Counts.</span>
+                </h2>
+                <p className="mt-5 max-w-2xl text-base leading-8 text-[#003358]/75 md:text-lg">
+                  Your contribution helps the campaign reach voters across
+                  Dallas County, strengthen outreach, and support a more modern,
+                  responsive County Clerk’s office.
+                </p>
+              </div>
+
+              <div className="rounded-3xl bg-[#003358] px-5 py-4 text-white">
+                <p className="text-[10px] font-black uppercase tracking-[0.28em] text-[#7eddf4]">
+                  Trusted Giving
+                </p>
+                <p className="mt-2 text-sm leading-6 text-white/80">
+                  Secure online donations through Donorbox.
+                </p>
+              </div>
             </div>
 
-            {/* Support Tiers */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
               {tiers.map((tier) => (
-                <a 
+                <a
                   key={tier.amount}
                   href={donorBoxUrl}
-                  className="border-4 border-slate-100 p-6 text-center hover:border-[#00a3cc] hover:bg-slate-50 transition-all group"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group rounded-[28px] bg-white px-4 py-6 text-center transition-colors hover:bg-[#00a3cc]"
                 >
-                  <div className="text-2xl font-black text-[#003358] mb-1 group-hover:scale-110 transition-transform">{tier.amount}</div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">{tier.label}</div>
+                  <div className="text-2xl font-black tracking-tight text-[#003358] sm:text-3xl group-hover:text-white">
+                    {tier.amount}
+                  </div>
+                  <div className="mt-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#007fa0] group-hover:text-white/80">
+                    {tier.label}
+                  </div>
                 </a>
               ))}
             </div>
 
-            <motion.a
+            <a
               href={donorBoxUrl}
-              whileHover={{ x: 15 }}
-              className="flex items-center justify-between bg-[#003358] text-white p-8 font-black uppercase tracking-[0.4em] group transition-all"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 flex flex-col gap-4 rounded-[32px] bg-[#003358] px-6 py-6 text-white sm:flex-row sm:items-center sm:justify-between sm:px-8"
             >
-              <span className="text-lg">Continue to Donation</span>
-              <FaArrowRightLong className="text-[#00a3cc] text-2xl group-hover:translate-x-4 transition-transform" />
-            </motion.a>
-          </div>
-
-          {/* RIGHT COLUMN: Security & Trust */}
-          <div className="lg:col-span-5 bg-slate-50 p-10 md:p-16 flex flex-col justify-center space-y-12">
-            <div className="space-y-10">
-              <div className="flex items-start space-x-6">
-                <div className="bg-[#003358] p-4 text-[#00a3cc]">
-             
-                </div>
-                <div>
-                  <h4 className="font-black uppercase text-xs tracking-widest mb-2">Secure Transfer</h4>
-                  <p className="text-[11px] text-slate-400 font-bold uppercase leading-relaxed">
-                    Industry standard SSL encryption via DonorBox. Your financial safety is our priority.
-                  </p>
-                </div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.28em] text-[#7eddf4]">
+                  Secure Donation Link
+                </p>
+                <p className="mt-2 text-xl font-black uppercase tracking-[0.15em] sm:text-2xl">
+                  Continue To Donation
+                </p>
               </div>
 
-              <div className="flex items-start space-x-6">
-                <div className="bg-[#00a3cc] p-4 text-[#003358]">
-                  <FaLock size={28} />
-                </div>
-                <div>
-                  <h4 className="font-black uppercase text-xs tracking-widest mb-2">Privacy Locked</h4>
-                  <p className="text-[11px] text-slate-400 font-bold uppercase leading-relaxed">
-                    Data is strictly used for campaign reporting as required by Texas Election Law.
-                  </p>
-                </div>
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#00a3cc] text-[#003358]">
+                <FaArrowRightLong size={22} />
               </div>
+            </a>
+          </section>
 
-              <div className="flex items-start space-x-6">
-                <div className="bg-slate-200 p-4 text-slate-600">
-                  <FaCreditCard size={28} />
+          <aside className="rounded-[32px] bg-[#003358] p-6 text-white sm:p-8 md:p-10 lg:col-span-5 xl:p-12">
+            <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#7eddf4]">
+              Security And Trust
+            </p>
+            <h3 className="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-4xl">
+              Give With Confidence
+            </h3>
+            <p className="mt-5 text-base leading-8 text-white/78">
+              We want every supporter to feel confident that their contribution
+              is secure, compliant, and directly supporting campaign outreach.
+            </p>
+
+            <div className="mt-10 space-y-4">
+              {trustItems.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-[28px] bg-white/10 p-5 sm:p-6"
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${item.tone}`}
+                    >
+                      {item.icon}
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-black uppercase tracking-[0.16em] text-white">
+                        {item.title}
+                      </h4>
+                      <p className="mt-2 text-sm leading-7 text-white/75">
+                        {item.text}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-black uppercase text-xs tracking-widest mb-2">Flexible Giving</h4>
-                  <p className="text-[11px] text-slate-400 font-bold uppercase leading-relaxed">
-                    Supporting Apple Pay, Google Pay, PayPal, and all major credit cards.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            {/* Trust Badge */}
-            <div className="pt-10 border-t border-slate-200 flex items-center space-x-4 grayscale opacity-50">
-               <FaHandHoldingHeart size={40} className="text-[#003358]" />
-               <span className="text-[10px] font-black uppercase tracking-[0.2em] leading-tight">
-                 Community <br /> Powered Campaign
-               </span>
+            <div className="mt-10 flex items-center gap-4 rounded-[28px] bg-[#00a3cc] px-5 py-5 text-[#003358]">
+              <FaHandHoldingHeart size={30} />
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.24em]">
+                  Community Powered
+                </p>
+                <p className="mt-1 text-sm font-bold leading-6">
+                  This campaign is built by people who believe in capable,
+                  modern public service.
+                </p>
+              </div>
             </div>
-          </div>
+          </aside>
         </div>
       </main>
 
-      {/* MANDATORY LEGAL FOOTER */}
-      <footer className="py-20 px-6 mt-auto">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <div className="border-[4px] border-[#003358] p-8 text-center bg-white">
-            <p className="text-xs font-black text-[#003358] uppercase tracking-[0.3em] leading-loose">
-              Political advertisement paid for by the <span className="text-[#00a3cc]">Damarcus Offord Campaign</span> in accordance with election laws.
+      <footer className="border-t border-[#d6edf5] px-6 py-14">
+        <div className="mx-auto max-w-5xl space-y-8">
+          <div className="rounded-[28px] bg-[#f7fcff] p-6 text-center md:p-8">
+            <p className="text-xs font-black uppercase leading-7 tracking-[0.22em] text-[#003358]">
+              Political advertisement paid for by the
+              <span className="text-[#00a3cc]">
+                {" "}
+                Damarcus Offord Campaign
+              </span>{" "}
+              in accordance with election laws.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-relaxed">
-            <p>Contributions or gifts to the campaign are not tax deductible as charitable contributions for Federal income tax purposes.</p>
-            <p>Texas law requires us to use our best efforts to collect and report the name, mailing address, occupation, and name of employer of individuals whose contributions exceed $100 in a reporting period.</p>
+
+          <div className="grid gap-5 text-[11px] font-bold uppercase leading-6 tracking-[0.16em] text-slate-500 md:grid-cols-2">
+            <p>
+              Contributions or gifts to the campaign are not tax deductible as
+              charitable contributions for federal income tax purposes.
+            </p>
+            <p>
+              Texas law requires us to use our best efforts to collect and
+              report the name, mailing address, occupation, and employer of
+              individuals whose contributions exceed $100 in a reporting period.
+            </p>
           </div>
         </div>
       </footer>
