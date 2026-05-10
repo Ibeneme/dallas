@@ -9,88 +9,93 @@ import {
 
 const NotFoundPage: React.FC = () => {
   return (
-    <div className="bg-white min-h-screen text-[#003358] font-sans selection:bg-[#00a3cc] selection:text-white flex items-center justify-center p-6">
-      {/* Background Architectural Grid Effect */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none overflow-hidden">
-        <div className="grid grid-cols-12 h-full w-full border-l border-t border-[#003358]">
-          {[...Array(144)].map((_, i) => (
-            <div
-              key={i}
-              className="border-r border-b border-[#003358] aspect-square"
-            />
-          ))}
-        </div>
-      </div>
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f7fcff] p-6 font-sans text-[#003358] selection:bg-[#00a3cc] selection:text-white">
+      <div className="absolute inset-0 opacity-[0.05] [background-image:linear-gradient(rgba(0,51,88,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(0,51,88,0.12)_1px,transparent_1px)] [background-size:32px_32px]" />
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl w-full relative z-10"
+        className="relative z-10 w-full max-w-5xl overflow-hidden rounded-[40px] bg-white"
       >
-        <div className="border-[12px] border-[#003358] bg-white p-8 md:p-20 shadow-[24px_24px_0px_#00a3cc] relative overflow-hidden">
-          {/* Top Alert Bar */}
-          <div className="absolute top-0 left-0 right-0 bg-[#003358] py-2 px-6 flex justify-between items-center">
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#00a3cc]">
+        <div className="bg-[#003358] px-6 py-4 text-white sm:px-8">
+          <div className="flex items-center justify-between gap-4">
+            <span className="text-[10px] font-black uppercase tracking-[0.35em] text-[#7eddf4]">
               Status: Error 404
             </span>
             <FaTriangleExclamation className="text-[#00a3cc]" />
           </div>
+        </div>
 
-          <div className="space-y-12 mt-8">
-            {/* The Big Number */}
-            <div className="relative">
-              <h1 className="text-[10rem] md:text-[15rem] font-black leading-none tracking-tighter text-[#003358]/5 select-none absolute -top-10 -left-6">
-                404
+        <div className="relative px-6 py-10 sm:px-8 sm:py-12 md:px-12 md:py-16">
+          <div className="pointer-events-none absolute right-4 top-4 select-none text-[6rem] font-black leading-none text-[#003358]/5 sm:text-[8rem] md:text-[11rem]">
+            404
+          </div>
+
+          <div className="relative z-10 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+            <div>
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#007fa0]">
+                Route Not Found
+              </p>
+
+              <h1 className="mt-4 text-4xl font-black uppercase leading-[0.84] tracking-tight sm:text-5xl md:text-7xl">
+                This Page
+                <br />
+                <span className="text-[#00a3cc]">Does Not Exist.</span>
               </h1>
-              <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.8] relative z-10">
-                Route <br /> <span className="text-[#00a3cc]">Not Found.</span>
-              </h2>
-            </div>
 
-            <div className="max-w-md space-y-6">
-              <div className="h-2 w-24 bg-[#00a3cc]" />
-              <p className="font-bold uppercase tracking-widest text-xs leading-loose text-slate-500">
-                The section you are looking for has been decommissioned, moved,
-                or never existed in the campaign blueprint. Let’s get you back
-                on course.
+              <p className="mt-6 max-w-xl text-sm leading-8 text-[#003358]/72 sm:text-base">
+                The page you tried to reach may have been moved, removed, or was
+                never part of the current campaign site structure. Let&apos;s get
+                you back to a working route.
               </p>
             </div>
 
-            {/* Navigation Options */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-8">
-              <Link to="/">
-                <motion.div
-                  whileHover={{ x: 10 }}
-                  className="bg-[#003358] text-white p-6 flex items-center justify-between group transition-all"
+            <div className="rounded-[32px] bg-[#f7fcff] p-6 sm:p-8">
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#007fa0]">
+                Recovery Options
+              </p>
+
+              <div className="mt-6 grid gap-4">
+                <Link to="/">
+                  <motion.div
+                    whileHover={{ y: -2 }}
+                    className="flex items-center justify-between rounded-[28px] bg-[#003358] px-6 py-5 text-white"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#00a3cc] text-[#003358]">
+                        <FaHouse />
+                      </div>
+                      <span className="text-sm font-black uppercase tracking-[0.18em]">
+                        Return Home
+                      </span>
+                    </div>
+                    <FaArrowLeftLong className="rotate-180 text-[#7eddf4]" />
+                  </motion.div>
+                </Link>
+
+                <motion.button
+                  whileHover={{ y: -2 }}
+                  onClick={() => window.history.back()}
+                  className="flex items-center justify-between rounded-[28px] bg-[#dff7ff] px-6 py-5 text-[#003358]"
                 >
-                  <div className="flex items-center space-x-4">
-                    <FaHouse className="text-[#00a3cc]" />
-                    <span className="font-black uppercase tracking-widest text-xs">
-                      Return Home
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#003358]">
+                      <FaArrowLeftLong />
+                    </div>
+                    <span className="text-sm font-black uppercase tracking-[0.18em]">
+                      Go Back
                     </span>
                   </div>
-                  <FaArrowLeftLong className="opacity-0 group-hover:opacity-100 transition-opacity rotate-180" />
-                </motion.div>
-              </Link>
-
-              <button
-                onClick={() => window.history.back()}
-                className="border-4 border-slate-100 p-6 flex items-center space-x-4 hover:border-[#00a3cc] transition-all group"
-              >
-                <FaArrowLeftLong className="text-[#003358] group-hover:-translate-x-2 transition-transform" />
-                <span className="font-black uppercase tracking-widest text-xs text-[#003358]">
-                  Go Back
-                </span>
-              </button>
+                </motion.button>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Bottom Right Decorative Accents */}
-          <div className="absolute bottom-0 right-0 p-4 border-t-4 border-l-4 border-[#003358] hidden md:block">
-            <span className="text-[10px] font-black uppercase tracking-widest opacity-20 italic">
-              Offord For Clerk 2026
-            </span>
-          </div>
+        <div className="border-t border-[#edf6fb] px-6 py-5 sm:px-8 md:px-12">
+          <p className="text-center text-[10px] font-black uppercase tracking-[0.24em] text-[#003358]/42 sm:text-left">
+            Offord For Clerk 2026
+          </p>
         </div>
       </motion.div>
     </div>

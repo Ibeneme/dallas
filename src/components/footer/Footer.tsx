@@ -6,7 +6,6 @@ import { MdOutlineSecurity } from "react-icons/md";
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
-  // Synchronized with App.tsx routes
   const footerLinks = [
     { name: "Home", path: "/" },
     { name: "Biography", path: "/biography" },
@@ -19,95 +18,88 @@ const Footer: React.FC = () => {
   const facebookUrl = "https://www.facebook.com/damarcus.offord";
 
   return (
-    <footer className="bg-[#003358] border-t-[8px] border-[#00a3cc] text-white pt-24 pb-12 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
-          {/* Brand & Identity */}
-          <div className="md:col-span-5 space-y-10">
-            <Link to="/" className="flex flex-col group w-fit">
-              <span className="text-white font-black text-5xl uppercase leading-[0.75] tracking-tighter transition-colors group-hover:text-[#00a3cc]">
+    <footer className="relative overflow-hidden bg-[#003358] text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,163,204,0.18),transparent_28%)]" />
+      <div className="pointer-events-none absolute right-0 top-0 select-none text-[7rem] font-black leading-none text-white/5 sm:text-[10rem] md:text-[13rem] lg:text-[16rem]">
+        CLERK
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-16 md:pb-14 md:pt-20">
+        <div className="grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <Link to="/" className="inline-flex flex-col leading-[0.82]">
+              <span className="text-4xl font-black uppercase tracking-tight text-white sm:text-5xl">
                 Damarcus
               </span>
-              <span className="text-[#00a3cc] font-black text-5xl uppercase leading-[0.75] tracking-tighter transition-colors group-hover:text-white">
+              <span className="text-4xl font-black uppercase tracking-tight text-[#00a3cc] sm:text-5xl">
                 Offord
               </span>
             </Link>
 
-            <div className="space-y-6">
-              <p className="text-slate-400 font-bold uppercase text-[11px] tracking-[0.2em] leading-loose max-w-sm">
-                Architecting a more efficient, transparent, and modern Dallas
-                County Clerk’s Office.
-              </p>
+            <p className="mt-6 max-w-md text-sm leading-8 text-white/72">
+              Building a more efficient, transparent, and modern Dallas County
+              Clerk’s Office with service that works for every resident.
+            </p>
 
-              <div className="flex flex-col space-y-3">
-                <div className="flex items-center space-x-3 text-[#00a3cc]">
-                  <FaLocationDot size={16} />
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">
-                    Dallas County, TX
-                  </span>
-                </div>
-              </div>
+            <div className="mt-6 inline-flex items-center gap-3 rounded-full bg-white/10 px-4 py-3 text-[11px] font-black uppercase tracking-[0.22em] text-white">
+              <FaLocationDot className="text-[#00a3cc]" />
+              <span>Dallas County, TX</span>
             </div>
           </div>
 
-          {/* Navigation Grid */}
-          <div className="md:col-span-3 space-y-10">
-            <h4 className="text-[#00a3cc] font-black uppercase text-xs tracking-[0.5em] flex items-center">
-              <span className="w-8 h-[2px] bg-[#00a3cc] mr-3"></span>
-              Blueprint
-            </h4>
-            <ul className="space-y-5">
+          <div className="lg:col-span-3">
+            <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#7eddf4]">
+              Explore
+            </p>
+
+            <div className="mt-5 grid gap-3">
               {footerLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="group flex items-center text-white font-bold uppercase text-[12px] tracking-[0.25em] hover:text-[#00a3cc] transition-all"
-                  >
-                    <FaArrowRightLong className="mr-3 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#00a3cc]" />
-                    {link.name}
-                  </Link>
-                </li>
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className="group flex items-center justify-between rounded-[24px] bg-white/5 px-4 py-4 text-sm font-black uppercase tracking-[0.16em] text-white/90 transition-colors hover:bg-white hover:text-[#003358]"
+                >
+                  <span>{link.name}</span>
+                  <FaArrowRightLong className="text-[#00a3cc] transition-transform group-hover:translate-x-1" />
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Action & Community */}
-          <div className="md:col-span-4 space-y-12">
-            <div className="space-y-6">
-              <h4 className="text-[#00a3cc] font-black uppercase text-xs tracking-[0.5em] flex items-center">
-                <span className="w-8 h-[2px] bg-[#00a3cc] mr-3"></span>
-                Engagement
-              </h4>
+          <div className="lg:col-span-4">
+            <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#7eddf4]">
+              Engage
+            </p>
+
+            <div className="mt-5 rounded-[32px] bg-white/10 p-5">
+              <p className="text-sm leading-7 text-white/78">
+                Support the campaign, stay connected, and follow official
+                updates across our public channels.
+              </p>
+
               <Link
                 to="/donate"
-                className="group flex justify-between items-center bg-[#00a3cc] text-[#003358] px-10 py-6 text-sm font-black uppercase tracking-[0.3em] transition-all hover:bg-white active:scale-[0.98] shadow-[8px_8px_0px_white] hover:shadow-none"
+                className="mt-5 flex items-center justify-between rounded-full bg-[#00a3cc] px-6 py-4 text-sm font-black uppercase tracking-[0.2em] text-[#003358] transition-colors hover:bg-white"
               >
-                <span>Donate </span>
-                <FaArrowRightLong
-                  size={20}
-                  className="group-hover:translate-x-2 transition-transform"
-                />
+                <span>Donate</span>
+                <FaArrowRightLong size={18} />
               </Link>
-            </div>
 
-            <div className="space-y-6">
-              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500">
-                Official Channels
-              </p>
-              <div className="flex gap-4">
+              <div className="mt-5 flex gap-3">
                 <a
                   href={facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-14 h-14 bg-white/5 border-2 border-white/10 flex items-center justify-center text-xl hover:bg-[#00a3cc] hover:text-[#003358] hover:border-[#00a3cc] transition-all"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#003358] transition-colors hover:bg-[#00a3cc]"
                   aria-label="Facebook"
                 >
                   <FaFacebookF />
                 </a>
+
                 <Link
                   to="/privacy"
-                  className="w-14 h-14 bg-white/5 border-2 border-white/10 flex items-center justify-center text-xl hover:bg-[#00a3cc] hover:text-[#003358] hover:border-[#00a3cc] transition-all"
-                  aria-label="Compliance"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white/12 text-white transition-colors hover:bg-white hover:text-[#003358]"
+                  aria-label="Privacy Policy"
                 >
                   <MdOutlineSecurity />
                 </Link>
@@ -116,30 +108,22 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Legal & Branding Foot */}
-        <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12">
-          <div className="order-2 md:order-1 space-y-2 text-center md:text-left">
-            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600">
+        <div className="mt-12 grid gap-4 border-t border-white/10 pt-8 md:grid-cols-[1fr_auto] md:items-center">
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[0.28em] text-white/55">
               © {currentYear} Damarcus Offord Campaign
             </p>
-            <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-700">
-              Structural Integrity in Leadership
+            <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/38">
+              Built around service, accountability, and trust.
             </p>
           </div>
 
-          <div className="order-1 md:order-2">
-            <div className="border-[4px] border-slate-600 px-8 py-4 bg-[#002642]">
-              <p className="text-[11px] font-black uppercase tracking-[0.3em] text-slate-300">
-                Paid for by the Damarcus Offord Campaign
-              </p>
-            </div>
+          <div className="rounded-full border border-white/12 bg-[#002642] px-6 py-4 text-center">
+            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-white/78">
+              Paid for by the Damarcus Offord Campaign
+            </p>
           </div>
         </div>
-      </div>
-
-      {/* Background Graphic Element */}
-      <div className="absolute top-0 right-0 text-[15rem] font-black text-white/5 leading-none select-none -mr-10 -mt-10 pointer-events-none">
-        CLERK
       </div>
     </footer>
   );

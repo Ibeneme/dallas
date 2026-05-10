@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Endorsement {
@@ -13,7 +14,6 @@ interface Endorsement {
 }
 
 const ENDORSEMENTS: Endorsement[] = [
-  // List remains the same...
   {
     name: "John Warren",
     title: "Current Dallas County Clerk",
@@ -29,7 +29,7 @@ const ENDORSEMENTS: Endorsement[] = [
   { name: "Dr. Theresa Daniel", title: "Commissioner", category: "County" },
   {
     name: "Ambassador Ron Kirk",
-    title: "Former U.S. Trade Rep",
+    title: "Former U.S. Trade Representative",
     category: "State/Federal",
   },
   {
@@ -74,7 +74,7 @@ const ENDORSEMENTS: Endorsement[] = [
   },
   {
     name: "Michael Hinojosa",
-    title: "Fmr. DISD Superintendent",
+    title: "Former DISD Superintendent",
     category: "Faith/Community",
   },
   {
@@ -98,9 +98,21 @@ const ENDORSEMENTS: Endorsement[] = [
   { name: "Rachel Proctor", title: "DeSoto Mayor", category: "Local" },
   { name: "Clyde Hairston", title: "Lancaster Mayor", category: "Local" },
   { name: "Adam Bazaldua", title: "Dallas Councilmember", category: "Local" },
-  { name: "Byron Sanders", title: "Dallas ISD Trustee", category: "Education" },
-  { name: "Joyce Foreman", title: "Dallas ISD Trustee", category: "Education" },
-  { name: "Ben Mackey", title: "Dallas ISD Trustee", category: "Education" },
+  {
+    name: "Byron Sanders",
+    title: "Dallas ISD Trustee",
+    category: "Education",
+  },
+  {
+    name: "Joyce Foreman",
+    title: "Dallas ISD Trustee",
+    category: "Education",
+  },
+  {
+    name: "Ben Mackey",
+    title: "Dallas ISD Trustee",
+    category: "Education",
+  },
 ];
 
 const CATEGORIES = [
@@ -112,107 +124,168 @@ const CATEGORIES = [
   "Education",
 ];
 
-const EndorsementsPage: React.FC = () => {
+const categoryStyles: Record<string, string> = {
+  County: "bg-[#dff7ff] text-[#003358]",
+  "State/Federal": "bg-[#00a3cc] text-white",
+  "Faith/Community": "bg-[#eef8fd] text-[#003358]",
+  Local: "bg-[#f3f9fc] text-[#003358]",
+  Education: "bg-[#cfefff] text-[#003358]",
+};
+
+const EndorsementsSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState("All");
 
   const filteredData =
     activeTab === "All"
       ? ENDORSEMENTS
-      : ENDORSEMENTS.filter((e) => e.category === activeTab);
+      : ENDORSEMENTS.filter(
+          (endorsement) => endorsement.category === activeTab
+        );
 
   return (
-    <div className="bg-[#FCFCFC] min-h-screen text-[#003358] font-sans pb-20 selection:bg-[#00a3cc]/20 overflow-x-hidden">
-      {/* Static Header (Now scrolls with the page) */}
-      <header className="pt-16 md:pt-28 pb-12 px-6 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto flex flex-col gap-8 md:gap-12">
-          <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <div className="w-8 md:w-12 h-1 bg-[#00a3cc]/40" />
-              <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em] text-[#00a3cc]">
-                Consensus Index
-              </span>
+    <section className="bg-[#f7fcff] px-6 py-16 md:py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="rounded-[36px] bg-[#003358] px-6 py-10 text-white sm:px-8 md:px-10 md:py-12 lg:px-12">
+          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+            <div>
+              <div className="inline-flex rounded-full bg-white/10 px-5 py-3">
+                <span className="text-[11px] font-black uppercase tracking-[0.35em] text-[#7eddf4]">
+                  Consensus Index
+                </span>
+              </div>
+
+              <h2 className="mt-6 text-4xl font-black uppercase leading-[0.84] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+                Trusted
+                <br />
+                <span className="text-[#00a3cc]">Endorsements.</span>
+              </h2>
             </div>
-            <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none">
-              THE <span className="text-[#00a3cc]/40">ENDORSEMENTS.</span>
-            </h1>
+
+            <div className="rounded-[28px] bg-white/10 p-6 sm:p-7">
+              <p className="text-[10px] font-black uppercase tracking-[0.28em] text-[#7eddf4]">
+                Coalition Overview
+              </p>
+              <p className="mt-3 text-sm leading-8 text-white/78 sm:text-base">
+                Support spans county government, state leadership, education,
+                faith communities, and local advocates across Dallas County.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 rounded-[32px] bg-white p-6 sm:p-8 md:p-10">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#007fa0]">
+                Filter Endorsements
+              </p>
+              <h3 className="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-4xl">
+                Explore Support By
+                <span className="text-[#00a3cc]"> Category</span>
+              </h3>
+            </div>
+
+            <div className="rounded-full bg-[#f7fcff] px-5 py-3 text-[11px] font-black uppercase tracking-[0.2em] text-[#007fa0]">
+              Total Endorsements: {filteredData.length}
+            </div>
           </div>
 
-          {/* Wrapped Navigation (No left-to-right overflow) */}
-          <nav className="flex flex-wrap gap-x-6 gap-y-4">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveTab(cat)}
-                className={`py-2 text-[10px] font-black uppercase tracking-[0.2em] transition-all relative ${
-                  activeTab === cat
-                    ? "text-[#003358]"
-                    : "text-slate-300 hover:text-slate-500"
-                }`}
-              >
-                {cat}
-                {activeTab === cat && (
-                  <motion.div
-                    layoutId="underline"
-                    className="absolute -bottom-1 left-0 w-full h-[2px] bg-[#00a3cc]"
-                  />
-                )}
-              </button>
-            ))}
+          <nav className="mt-8 flex gap-3 overflow-x-auto pb-2">
+            {CATEGORIES.map((category) => {
+              const isActive = activeTab === category;
+
+              return (
+                <button
+                  key={category}
+                  onClick={() => setActiveTab(category)}
+                  className={`shrink-0 rounded-full px-5 py-3 text-[11px] font-black uppercase tracking-[0.18em] transition-colors ${
+                    isActive
+                      ? "bg-[#003358] text-white"
+                      : "bg-[#f1f8ff] text-[#003358] hover:bg-[#dff7ff]"
+                  }`}
+                >
+                  {category}
+                </button>
+              );
+            })}
           </nav>
         </div>
-      </header>
 
-      {/* Grid Content */}
-      <section className="max-w-7xl mx-auto px-6 mt-12 md:mt-16">
-        <motion.div
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredData.map((endorser) => (
-              <motion.div
-                layout
-                key={endorser.name}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="bg-white border border-slate-100 p-6 md:p-8 flex flex-col justify-between min-h-[200px] shadow-sm hover:shadow-xl hover:shadow-[#00a3cc]/5 transition-all group"
-              >
-                <div className="space-y-3">
-                  <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-[#00a3cc]">
-                    {endorser.category}
-                  </span>
-                  <h3 className="text-lg md:text-xl font-black uppercase tracking-tighter leading-tight">
-                    {endorser.name}
-                  </h3>
-                </div>
+        <div className="mt-8">
+          <motion.div
+            layout
+            className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredData.map((endorser) => (
+                <motion.article
+                  layout
+                  key={endorser.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 16 }}
+                  transition={{ duration: 0.22 }}
+                  className="rounded-[32px] bg-white p-6 sm:p-7"
+                >
+                  <div className="flex h-full flex-col justify-between">
+                    <div>
+                      <div
+                        className={`inline-flex rounded-full px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] ${
+                          categoryStyles[endorser.category]
+                        }`}
+                      >
+                        {endorser.category}
+                      </div>
 
-                <div className="mt-8">
-                  <div className="bg-[#00a3cc]/5 p-4 border-l-4 border-[#00a3cc]/40">
-                    <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-[#003358]/80 leading-relaxed">
-                      {endorser.title}
-                    </p>
+                      <h3 className="mt-5 text-2xl font-black uppercase leading-tight tracking-tight text-[#003358]">
+                        {endorser.name}
+                      </h3>
+                    </div>
+
+                    <div className="mt-6 rounded-[24px] bg-[#f7fcff] p-4">
+                      <p className="text-[11px] font-bold uppercase leading-7 tracking-[0.16em] text-[#003358]/78">
+                        {endorser.title}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-      </section>
-
-      {/* Footer Branding */}
-      <footer className="mt-40 max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter mb-12">
-          JOIN THE <span className="text-[#00a3cc]/40">COALITION.</span>
-        </h2>
-        <div className="inline-block px-4 py-2 border border-slate-200">
-          <span className="text-[8px] font-black uppercase tracking-[0.4em] text-slate-300">
-            Paid for by the Damarcus Offord Campaign // 2026
-          </span>
+                </motion.article>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
-      </footer>
-    </div>
+
+        <div className="mt-10 rounded-[32px] bg-[#003358] px-6 py-10 text-center text-white sm:px-8 md:px-12">
+          <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#7eddf4]">
+            Join The Coalition
+          </p>
+          <h3 className="mt-4 text-3xl font-black uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl">
+            Build Broader
+            <span className="text-[#00a3cc]"> Support.</span>
+          </h3>
+          <p className="mx-auto mt-5 max-w-3xl text-sm leading-8 text-white/78 sm:text-base">
+            This campaign is powered by trusted voices who believe in competent,
+            modern, and accountable public service for Dallas County.
+          </p>
+
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              to="/contact"
+              className="rounded-full bg-[#00a3cc] px-8 py-4 text-sm font-black uppercase tracking-[0.2em] text-[#003358] transition-colors hover:bg-white"
+            >
+              Endorse Now
+            </Link>
+
+            <Link
+              to="/donate"
+              className="rounded-full bg-white/10 px-8 py-4 text-sm font-black uppercase tracking-[0.2em] text-white transition-colors hover:bg-white hover:text-[#003358]"
+            >
+              Donate Now
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
-export default EndorsementsPage;
+export default EndorsementsSection;

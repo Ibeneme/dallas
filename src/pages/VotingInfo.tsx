@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
 import {
   FaFingerprint,
   FaCalendarCheck,
@@ -9,138 +8,189 @@ import {
 } from "react-icons/fa6";
 
 const ElectionAlert: React.FC = () => {
-  const [isCasting, setIsCasting] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsCasting(true);
-      setTimeout(() => setIsCasting(false), 1000);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="bg-white min-h-screen font-sans selection:bg-[#00a3cc] selection:text-white pb-32">
-      {/* Structural Header */}
-      <header className="pt-32 pb-24 px-6 bg-[#003358] text-white border-b-[16px] border-[#00a3cc] relative overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="flex items-center gap-3 mb-8">
-            <FaFingerprint className="text-[#00a3cc] text-2xl" />
-            <span className="font-black uppercase tracking-[0.4em] text-[10px]">
+    <div className="min-h-screen bg-white font-sans text-[#003358] selection:bg-[#00a3cc] selection:text-white">
+      <header className="relative overflow-hidden border-b-[10px] border-[#00a3cc] bg-[#003358] px-6 pb-16 pt-24 text-white md:pb-24 md:pt-32">
+        <div className="mx-auto max-w-7xl">
+          <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3">
+            <FaFingerprint className="text-[#00a3cc]" />
+            <span className="text-[11px] font-black uppercase tracking-[0.35em]">
               Voter Protocol 2026
             </span>
           </div>
 
-          <h1 className="text-6xl md:text-[9.5rem] font-black uppercase tracking-tighter leading-[0.8]">
-            Primary <br /> <span className="text-[#00a3cc]">Runoff.</span>
-          </h1>
+          <div className="mt-8 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+            <div>
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#7eddf4]">
+                Dallas County Democratic Primary Runoff
+              </p>
+              <h1 className="mt-4 text-5xl font-black uppercase leading-[0.85] tracking-tight sm:text-6xl md:text-8xl lg:text-[9rem]">
+                Primary
+                <br />
+                <span className="text-[#00a3cc]">Runoff.</span>
+              </h1>
+            </div>
+
+            <div className="rounded-[32px] bg-white/10 p-6 sm:p-8">
+              <div className="flex items-center gap-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#00a3cc] text-[#003358]">
+                  <FaBoxArchive size={28} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.28em] text-[#7eddf4]">
+                    Voting Reminder
+                  </p>
+                  <p className="mt-2 text-sm leading-7 text-white/80">
+                    Review the schedule, confirm your location, and make a plan
+                    to cast your ballot.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Animated Ballot Visual */}
-        <div className="absolute right-10 bottom-10 flex flex-col items-center opacity-20 md:opacity-40">
-          <FaBoxArchive size={120} className="text-white z-10" />
-          <AnimatePresence>
-            {isCasting && (
-              <motion.div
-                initial={{ y: -60, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 40, opacity: 0 }}
-                className="absolute top-0 w-12 h-16 bg-[#00a3cc] border-2 border-white"
-              />
-            )}
-          </AnimatePresence>
+        <div className="pointer-events-none absolute bottom-0 right-0 select-none text-[7rem] font-black leading-none text-white/5 sm:text-[10rem] md:text-[14rem] lg:text-[18rem]">
+          VOTE
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 mt-20 space-y-24">
-        {/* Intro Context */}
-        <div className="max-w-2xl space-y-8">
-          <div className="h-2 w-24 bg-[#003358]" />
-          <p className="text-xl md:text-2xl font-bold uppercase tracking-tight text-[#003358] leading-tight">
-            Modernizing Dallas County requires active participation. Review the
-            schedule to ensure your voice is counted in the blueprint for
-            leadership.
-          </p>
-        </div>
-
-        {/* The Voting Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Early Voting Block */}
-          <div className="border-[8px] border-[#003358] p-10 md:p-16 bg-white shadow-[16px_16px_0px_#00a3cc] space-y-10">
-            <div className="flex items-center gap-4 text-[#00a3cc]">
-              <FaCalendarCheck size={24} />
-              <h3 className="font-black uppercase tracking-[0.3em] text-sm">
-                Early Voting
-              </h3>
-            </div>
-
-            <div className="space-y-4">
-              <h2 className="text-6xl md:text-7xl font-black uppercase tracking-tighter text-[#003358]">
-                May 18-22
-              </h2>
-              <div className="flex items-center gap-3 font-black uppercase tracking-widest text-xs text-slate-400">
-                <FaClock className="text-[#00a3cc]" />
-                <span>07:00 AM — 07:00 PM Daily</span>
-              </div>
-            </div>
-
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 leading-relaxed border-t border-slate-100 pt-8">
-              Available at any early voting location within Dallas County. Bring
-              a valid form of identification.
+      <main className="mx-auto max-w-7xl px-6 py-10 md:py-14">
+        <section className="grid gap-6 lg:grid-cols-12">
+          <div className="rounded-[32px] bg-[#f7fcff] p-6 sm:p-8 md:p-10 lg:col-span-5">
+            <div className="h-1 w-20 bg-[#00a3cc]" />
+            <p className="mt-6 text-2xl font-black uppercase leading-tight tracking-tight sm:text-3xl">
+              Modernizing Dallas County requires active participation.
+            </p>
+            <p className="mt-5 text-sm leading-8 text-[#003358]/72 sm:text-base">
+              Review the runoff voting schedule and make a plan to participate.
+              Your voice helps shape the future of the Dallas County Clerk’s
+              office.
             </p>
           </div>
 
-          {/* Election Day Block */}
-          <div className="bg-[#003358] p-10 md:p-16 text-white border-[8px] border-[#003358] shadow-[16px_16px_0px_#f1f5f9] space-y-10">
-            <div className="flex items-center gap-4 text-[#00a3cc]">
-              <FaLocationCrosshairs size={24} />
-              <h3 className="font-black uppercase tracking-[0.3em] text-sm text-white">
-                Final Call
-              </h3>
-            </div>
+          <div className="rounded-[32px] bg-[#003358] p-6 text-white sm:p-8 md:p-10 lg:col-span-7">
+            <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#7eddf4]">
+              Key Information
+            </p>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              <div className="rounded-[28px] bg-white/10 p-5">
+                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#7eddf4]">
+                  Election Type
+                </p>
+                <p className="mt-3 text-lg font-black uppercase leading-tight">
+                  Democratic Primary Runoff
+                </p>
+              </div>
 
-            <div className="space-y-4">
-              <h2 className="text-6xl md:text-7xl font-black uppercase tracking-tighter text-[#00a3cc]">
-                May 26
-              </h2>
-              <p className="font-black uppercase tracking-[0.5em] text-xs">
-                Election Day
-              </p>
-            </div>
+              <div className="rounded-[28px] bg-white/10 p-5">
+                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#7eddf4]">
+                  County
+                </p>
+                <p className="mt-3 text-lg font-black uppercase leading-tight">
+                  Dallas County
+                </p>
+              </div>
 
-            <div className="bg-white/5 p-6 border-l-4 border-[#00a3cc]">
-              <p className="text-[11px] font-black uppercase tracking-widest leading-loose">
-                Polls are open across the county. Your precinct location is
-                determined by your registered residential address.
-              </p>
+              <div className="rounded-[28px] bg-[#00a3cc] p-5 text-[#003358]">
+                <p className="text-[10px] font-black uppercase tracking-[0.22em]">
+                  Action
+                </p>
+                <p className="mt-3 text-lg font-black uppercase leading-tight">
+                  Make A Voting Plan
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Action Summary - Cleaned up to remove external tools */}
-        <section className="bg-slate-50 p-12 md:p-20 border-x-[12px] border-[#003358] text-center space-y-6">
-          <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter">
-            Submit your <span className="text-[#00a3cc]">Choice.</span>
+        <section className="mt-8 grid gap-6 lg:grid-cols-2">
+          <article className="rounded-[32px] bg-[#f7fcff] p-6 sm:p-8 md:p-10">
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#00a3cc] text-[#003358]">
+                <FaCalendarCheck size={24} />
+              </div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#007fa0]">
+                  Early Voting
+                </p>
+                <h2 className="mt-2 text-4xl font-black uppercase leading-none tracking-tight sm:text-5xl md:text-6xl">
+                  May 18-22
+                </h2>
+              </div>
+            </div>
+
+            <div className="mt-8 space-y-4">
+              <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-4">
+                <FaClock className="text-[#00a3cc]" />
+                <span className="text-sm font-black uppercase tracking-[0.16em] text-[#003358]">
+                  07:00 AM To 07:00 PM Daily
+                </span>
+              </div>
+
+              <p className="text-sm leading-8 text-[#003358]/72">
+                Early voting is available at any designated early voting
+                location within Dallas County. Bring an acceptable form of
+                identification when you vote.
+              </p>
+            </div>
+          </article>
+
+          <article className="rounded-[32px] bg-[#003358] p-6 text-white sm:p-8 md:p-10">
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#00a3cc] text-[#003358]">
+                <FaLocationCrosshairs size={24} />
+              </div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#7eddf4]">
+                  Election Day
+                </p>
+                <h2 className="mt-2 text-4xl font-black uppercase leading-none tracking-tight text-[#00a3cc] sm:text-5xl md:text-6xl">
+                  May 26
+                </h2>
+              </div>
+            </div>
+
+            <div className="mt-8 rounded-[28px] bg-white/10 p-5">
+              <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#7eddf4]">
+                Final Call
+              </p>
+              <p className="mt-3 text-sm leading-8 text-white/78">
+                Polling location access on Election Day may depend on your
+                registered residential address and county election guidance.
+                Check your local Dallas County voting resources before heading
+                out.
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <section className="mt-8 rounded-[32px] bg-[#cfefff] px-6 py-8 text-center sm:px-8 md:px-12 md:py-12">
+          <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#007fa0]">
+            Voting Reminder
+          </p>
+          <h3 className="mt-4 text-3xl font-black uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl">
+            Submit Your
+            <span className="text-[#00a3cc]"> Choice.</span>
           </h3>
-          <p className="max-w-xl mx-auto text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 leading-relaxed">
-            The path to a modernized clerk's office depends on this runoff.
-            Check local Dallas County resources for your specific precinct
-            assignment.
+          <p className="mx-auto mt-5 max-w-3xl text-sm leading-8 text-[#003358]/72 sm:text-base">
+            The path to a more modern County Clerk’s office depends on runoff
+            turnout. Confirm your schedule, review your county voting resources,
+            and make your plan to vote.
           </p>
         </section>
       </main>
 
-      {/* Footer Disclaimer */}
-      <div className="mt-32 px-6">
-        <div className="max-w-6xl mx-auto border-t-2 border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center opacity-40 gap-4">
-          <span className="text-[9px] font-black uppercase tracking-[0.4em]">
+      <footer className="px-6 pb-12 pt-6">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 border-t border-[#d6edf5] pt-8 text-center md:flex-row md:items-center md:justify-between md:text-left">
+          <span className="text-[10px] font-black uppercase tracking-[0.28em] text-[#003358]/55">
             Paid for by the Damarcus Offord Campaign
           </span>
-          <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#00a3cc]">
-            Node: Dallas_Precinct_Alert
+          <span className="text-[10px] font-black uppercase tracking-[0.28em] text-[#00a3cc]">
+            Dallas Precinct Alert 2026
           </span>
         </div>
-      </div>
+      </footer>
     </div>
   );
 };

@@ -12,46 +12,41 @@ const Navbar: React.FC = () => {
     { name: "Endorsements", path: "/endorsements" },
     { name: "Voting Info", path: "/voting-info" },
     { name: "Contact", path: "/contact" },
-    { name: "Privacy", path: "/privacy" }, // NEW: Added to the blueprint
+    { name: "Privacy", path: "/privacy" },
   ];
 
   const facebookUrl = "https://www.facebook.com/damarcus.offord";
 
   return (
-    <nav className="bg-[#003358] border-b-[6px] border-[#00a3cc] sticky top-0 z-[100]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex justify-between h-24">
-          {/* Logo Section */}
-          <div className="flex items-center">
-            <Link to="/" className="group flex flex-col">
-              <span className="text-white font-black text-3xl uppercase leading-[0.8] tracking-tighter transition-colors group-hover:text-[#00a3cc]">
+    <nav className="sticky top-0 z-[100] border-b border-white/10 bg-[#003358]/95 text-white backdrop-blur-md">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex min-h-[88px] items-center justify-between gap-6">
+          <Link to="/" className="shrink-0">
+            <div className="flex flex-col leading-[0.82]">
+              <span className="text-2xl font-black uppercase tracking-tight text-white sm:text-3xl">
                 Damarcus
               </span>
-              <span className="text-[#00a3cc] font-black text-3xl uppercase leading-[0.8] tracking-tighter transition-colors group-hover:text-white">
+              <span className="text-2xl font-black uppercase tracking-tight text-[#00a3cc] sm:text-3xl">
                 Offord
               </span>
-            </Link>
-          </div>
+            </div>
+          </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden items-center gap-2 lg:flex">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
+
               return (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`relative px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-200
-                    ${
-                      isActive
-                        ? "text-[#00a3cc] bg-white/5"
-                        : "text-white hover:text-[#00a3cc] hover:bg-white/5"
-                    }`}
+                  className={`rounded-full px-4 py-3 text-[11px] font-black uppercase tracking-[0.18em] transition-colors ${
+                    isActive
+                      ? "bg-white text-[#003358]"
+                      : "text-white/88 hover:bg-white/10 hover:text-[#7eddf4]"
+                  }`}
                 >
                   {link.name}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 w-full h-1 bg-[#00a3cc]" />
-                  )}
                 </Link>
               );
             })}
@@ -60,84 +55,92 @@ const Navbar: React.FC = () => {
               href={facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 text-white hover:text-[#00a3cc] transition-colors border-l border-white/10 ml-2"
+              className="ml-2 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-colors hover:bg-[#00a3cc] hover:text-[#003358]"
+              aria-label="Facebook"
             >
-              <FaFacebookF size={16} />
+              <FaFacebookF size={15} />
             </a>
 
             <Link
               to="/donate"
-              className="ml-4 bg-[#00a3cc] text-[#003358] px-8 py-3 text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-200 border-4 border-[#00a3cc] hover:bg-transparent hover:text-white"
+              className="ml-2 rounded-full bg-[#00a3cc] px-6 py-3 text-[11px] font-black uppercase tracking-[0.22em] text-[#003358] transition-colors hover:bg-white"
             >
               Donate
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex items-center lg:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-white p-2 border-2 border-white/10"
+          <button
+            onClick={() => setIsOpen((prev) => !prev)}
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white lg:hidden"
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <svg
-                className="h-8 w-8"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="square"
-                    strokeLinejoin="round"
-                    strokeWidth={3}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="square"
-                    strokeLinejoin="round"
-                    strokeWidth={3}
-                    d="M4 8h16M4 16h16"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M6 6l12 12M18 6L6 18"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M4 7h16M4 12h16M4 17h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="lg:hidden bg-[#002642] border-t-4 border-[#00a3cc] fixed inset-0 top-24 z-[99] flex flex-col p-8 overflow-y-auto">
-          <div className="flex flex-col space-y-2">
-            {navLinks.map((link) => (
+        <div className="border-t border-white/10 bg-[#002642] lg:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+
+              return (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`rounded-[24px] px-5 py-4 text-sm font-black uppercase tracking-[0.18em] ${
+                    isActive
+                      ? "bg-white text-[#003358]"
+                      : "bg-white/5 text-white"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+
+            <div className="mt-3 flex flex-col gap-3 sm:flex-row">
               <Link
-                key={link.name}
-                to={link.path}
+                to="/donate"
                 onClick={() => setIsOpen(false)}
-                className="block text-white hover:text-[#00a3cc] py-4 text-2xl font-black uppercase tracking-tighter border-b border-white/5"
+                className="flex-1 rounded-full bg-[#00a3cc] px-6 py-4 text-center text-sm font-black uppercase tracking-[0.22em] text-[#003358]"
               >
-                {link.name}
+                Donate Now
               </Link>
-            ))}
-          </div>
 
-          <div className="mt-auto pt-8 pb-12 space-y-6">
-            <Link
-              to="/donate"
-              onClick={() => setIsOpen(false)}
-              className="block bg-[#00a3cc] text-[#003358] py-6 text-center text-xl font-black uppercase tracking-[0.4em] shadow-[8px_8px_0px_white]"
-            >
-              Donate Now
-            </Link>
-
-            <a
-              href={facebookUrl}
-              className="flex items-center justify-center space-x-4 text-white font-black uppercase tracking-widest text-xs"
-            >
-              <FaFacebookF className="text-[#00a3cc]" />
-              <span>Follow the Campaign</span>
-            </a>
+              <a
+                href={facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 rounded-full bg-white/10 px-6 py-4 text-sm font-black uppercase tracking-[0.18em] text-white"
+              >
+                <FaFacebookF className="text-[#00a3cc]" />
+                <span>Facebook</span>
+              </a>
+            </div>
           </div>
         </div>
       )}
