@@ -190,7 +190,7 @@ const EndorsementsSection: React.FC = () => {
               </h3>
             </div>
 
-            <div className="rounded-full px-5 py-3 text-[11px] font-black uppercase tracking-[0.2em] text-[#007fa0]">
+            <div className="rounded-full px-5 bg-[#f7fcff] py-3 text-[11px] font-black uppercase tracking-[0.2em] text-[#007fa0]">
               Endorsed by hundreds of elected officials, precinct chairs, and community leaders
             </div>
           </div>
