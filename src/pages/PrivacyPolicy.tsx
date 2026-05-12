@@ -18,7 +18,7 @@ const PrivacyPolicy: React.FC = () => {
           <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3">
             <FaCubesStacked className="text-[#00a3cc]" />
             <span className="text-[11px] font-black uppercase tracking-[0.35em]">
-              Voter Privacy Protocol
+              Voter Privacy
             </span>
           </div>
 

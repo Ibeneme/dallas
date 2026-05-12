@@ -282,7 +282,7 @@ const ContactPage: React.FC = () => {
                     <FaCubesStacked size={20} />
                   </div>
                   <p className="mt-4 text-[11px] font-black uppercase tracking-[0.28em] text-[#7eddf4]">
-                    Authentication Protocol
+                    Authentication 
                   </p>
                   <p className="mt-4 text-sm leading-7 text-white/80">
                     All submitted data packets are processed through official
