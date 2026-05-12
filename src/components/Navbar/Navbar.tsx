@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
     { name: "Privacy", path: "/privacy" },
   ];
 
-  const facebookUrl = "https://www.facebook.com/damarcus.offord";
+  const facebookUrl = "https://www.facebook.com/share/1CkPGR9r3q/?mibextid=wwXIfr";
 
   return (
     <nav className="sticky top-0 z-[100] bg-[#002f5a]/95 text-white backdrop-blur-lg border-b border-white/10">
