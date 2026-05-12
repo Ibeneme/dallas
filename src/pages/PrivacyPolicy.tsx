@@ -2,11 +2,7 @@ import React from "react";
 import {
   FaShieldHalved,
   FaFileContract,
-  FaUserCheck,
   FaCubesStacked,
-  FaEnvelope,
-  FaScaleBalanced,
-  FaArrowRightLong,
   FaMobileScreenButton,
   FaLock,
 } from "react-icons/fa6";
