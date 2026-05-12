@@ -19,11 +19,13 @@ const ENDORSEMENTS: Endorsement[] = [
     title: "Current Dallas County Clerk",
     category: "County",
   },
+
   {
-    name: "James Tarleco",
-    title: "American politician",
+    name: "James Talarico",
+    title: "Texas State Representative",
     category: "State/Federal",
   },
+
   { name: "John Ames", title: "Tax Assessor", category: "County" },
   { name: "Felicia Pitre", title: "District Clerk", category: "County" },
   { name: "Pauline Medrano", title: "Treasurer", category: "County" },

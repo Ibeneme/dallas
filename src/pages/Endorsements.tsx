@@ -20,8 +20,8 @@ const ENDORSEMENTS: Endorsement[] = [
     category: "County",
   },
   {
-    name: "James Tarleco",
-    title: "American politician",
+    name: "James Talarico",
+    title: "Texas State Representative",
     category: "State/Federal",
   },
   { name: "John Ames", title: "Tax Assessor", category: "County" },

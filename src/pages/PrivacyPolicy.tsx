@@ -7,19 +7,22 @@ import {
   FaEnvelope,
   FaScaleBalanced,
   FaArrowRightLong,
+  FaMobileScreenButton,
+  FaLock,
 } from "react-icons/fa6";
 
 const PrivacyPolicy: React.FC = () => {
-  const effectiveDate = "August 8, 2024";
+  const lastUpdated = "May 2026";
 
   return (
     <div className="min-h-screen bg-white font-sans text-[#003358] selection:bg-[#00a3cc] selection:text-white">
+      {/* Header */}
       <header className="relative overflow-hidden border-b-[10px] border-[#00a3cc] bg-[#003358] px-6 pb-16 pt-24 text-white md:pb-24 md:pt-32">
         <div className="mx-auto max-w-7xl">
           <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-3">
             <FaCubesStacked className="text-[#00a3cc]" />
             <span className="text-[11px] font-black uppercase tracking-[0.35em]">
-              Governance Protocol
+              Voter Privacy Protocol
             </span>
           </div>
 
@@ -33,218 +36,184 @@ const PrivacyPolicy: React.FC = () => {
 
               <div className="mt-6 flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.25em] text-[#7eddf4]">
                 <FaFileContract className="text-[#00a3cc]" />
-                <span>Effective Date: {effectiveDate}</span>
+                <span>Last Updated: {lastUpdated}</span>
               </div>
             </div>
 
-            <div className="rounded-[32px] bg-white/10 p-6 sm:p-8">
+            <div className="rounded-[32px] bg-white/10 p-6 sm:p-8 backdrop-blur-sm border border-white/5">
               <p className="text-[10px] font-black uppercase tracking-[0.28em] text-[#7eddf4]">
-                Campaign Commitment
+                Official Statement
               </p>
-              <p className="mt-3 text-sm leading-8 text-white/78">
-                This campaign is committed to protecting visitor information and
-                handling campaign-related data responsibly and transparently.
+              <p className="mt-3 text-sm leading-relaxed text-white/80">
+                Damarcus Offord for County Clerk is a campaign supporting
+                Damarcus Offord's candidacy for Dallas County Clerk. This
+                Privacy Policy explains how we collect, use, and protect
+                information submitted through this website.
               </p>
             </div>
           </div>
         </div>
 
         <div className="pointer-events-none absolute bottom-0 right-0 select-none text-[7rem] font-black leading-none text-white/5 sm:text-[10rem] md:text-[14rem] lg:text-[18rem]">
-          LEGAL
+          DATA
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-6 py-10 md:py-14">
-        <section className="rounded-[32px] bg-[#f7fcff] p-6 sm:p-8 md:p-10">
-          <p className="max-w-4xl text-lg font-bold leading-8 text-[#003358] sm:text-xl md:text-2xl">
-            This campaign is committed to protecting the privacy of visitors and
-            users of this website. By accessing and using this site, you consent
-            to the terms of this Privacy Policy.
-          </p>
-        </section>
+      <main className="mx-auto max-w-7xl px-6 py-10 md:py-16">
+        {/* Section: Information Collection */}
+        <section className="grid gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <div className="sticky top-10">
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#00a3cc]">
+                Section 01
+              </p>
+              <h2 className="mt-4 text-4xl font-black uppercase leading-[0.9] tracking-tight text-[#003358] sm:text-5xl">
+                Information
+                <br />
+                We Collect
+              </h2>
+            </div>
+          </div>
 
-        <section className="mt-8 grid gap-6 lg:grid-cols-12">
-          <div className="rounded-[32px] bg-[#003358] p-6 text-white sm:p-8 lg:col-span-4">
-            <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#7eddf4]">
-              Section 01
+          <div className="rounded-[40px] bg-[#f7fcff] border border-[#e3f2f9] p-8 md:p-12 lg:col-span-8">
+            <p className="text-lg leading-8 text-[#003358]/80">
+              When you sign up to receive updates, sign a petition, or take
+              action through this site, we may collect your{" "}
+              <span className="font-bold text-[#003358]">
+                name, email address, phone number, and ZIP code.
+              </span>{" "}
+              We may also collect basic technical information such as browser
+              type and IP address through standard website analytics.
             </p>
-            <h2 className="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-4xl">
-              Information Collection
-            </h2>
-          </div>
-
-          <div className="space-y-5 lg:col-span-8">
-            <div className="rounded-[28px] bg-white p-6">
-              <h3 className="text-sm font-black uppercase tracking-[0.2em] text-[#007fa0]">
-                Personal Information
-              </h3>
-              <p className="mt-3 text-sm leading-8 text-[#003358]/72">
-                We may collect personal information you voluntarily provide,
-                including your name, email address, mailing address, and phone
-                number when you submit forms through this website.
-              </p>
-            </div>
-
-            <div className="rounded-[28px] bg-[#cfefff] p-6">
-              <h3 className="text-sm font-black uppercase tracking-[0.2em] text-[#007fa0]">
-                Sms Opt In Data
-              </h3>
-              <p className="mt-3 text-sm leading-8 text-[#003358]/72">
-                If you choose to opt in to receive text messages, we collect
-                your phone number and your consent information. This data is
-                used only for campaign-related communication and compliance.
-              </p>
-            </div>
-
-            <div className="rounded-[28px] bg-white p-6">
-              <h3 className="text-sm font-black uppercase tracking-[0.2em] text-[#007fa0]">
-                Technical Logs
-              </h3>
-              <p className="mt-3 text-sm leading-8 text-[#003358]/72">
-                We may automatically collect limited technical information such
-                as IP address, browser type, device information, and usage
-                patterns to improve performance and site reliability.
-              </p>
-            </div>
           </div>
         </section>
 
-        <section className="mt-8 grid gap-6 lg:grid-cols-12">
-          <div className="rounded-[32px] bg-[#003358] p-6 text-white sm:p-8 lg:col-span-4">
-            <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#7eddf4]">
-              Section 02
+        {/* Section: How We Use Information */}
+        <section className="mt-12 grid gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <div className="sticky top-10">
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#00a3cc]">
+                Section 02
+              </p>
+              <h2 className="mt-4 text-4xl font-black uppercase leading-[0.9] tracking-tight text-[#003358] sm:text-5xl">
+                How We Use
+                <br />
+                Information
+              </h2>
+            </div>
+          </div>
+
+          <div className="rounded-[40px] bg-[#003358] p-8 text-white md:p-12 lg:col-span-8 shadow-xl shadow-[#003358]/10">
+            <p className="text-lg leading-8 text-white/80">
+              We use your information to send campaign updates, share
+              information about Damarcus Offord's candidacy, and coordinate
+              volunteer and civic engagement activities.{" "}
+              <span className="font-bold text-[#7eddf4]">
+                We do not sell your personal information to any third party.
+              </span>
             </p>
-            <h2 className="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-4xl">
-              How Information Is Used
-            </h2>
-          </div>
-
-          <div className="rounded-[32px] bg-[#f7fcff] p-6 sm:p-8 lg:col-span-8">
-            <div className="grid gap-4">
-              <div className="flex items-start gap-4 rounded-2xl bg-white p-4">
-                <FaArrowRightLong className="mt-1 text-[#00a3cc]" />
-                <p className="text-sm font-bold uppercase leading-7 tracking-[0.14em] text-[#003358]">
-                  Respond to direct inquiries and submitted contact requests
-                </p>
-              </div>
-
-              <div className="flex items-start gap-4 rounded-2xl bg-white p-4">
-                <FaArrowRightLong className="mt-1 text-[#00a3cc]" />
-                <p className="text-sm font-bold uppercase leading-7 tracking-[0.14em] text-[#003358]">
-                  Send campaign updates, newsletters, and relevant outreach
-                </p>
-              </div>
-
-              <div className="flex items-start gap-4 rounded-2xl bg-white p-4">
-                <FaArrowRightLong className="mt-1 text-[#00a3cc]" />
-                <p className="text-sm font-bold uppercase leading-7 tracking-[0.14em] text-[#003358]">
-                  Monitor and improve website performance and visitor experience
-                </p>
-              </div>
-
-              <div className="flex items-start gap-4 rounded-2xl bg-white p-4">
-                <FaArrowRightLong className="mt-1 text-[#00a3cc]" />
-                <p className="text-sm font-bold uppercase leading-7 tracking-[0.14em] text-[#003358]">
-                  Comply with campaign reporting rules and legal obligations
-                </p>
-              </div>
-            </div>
           </div>
         </section>
 
-        <section className="mt-8 rounded-[32px] bg-[#003358] p-6 text-white sm:p-8 md:p-10">
-          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-start">
+        {/* Section: Text Messaging */}
+        <section className="mt-12 rounded-[40px] bg-[#e6f7ff] border border-[#bde4f7] p-8 md:p-12">
+          <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#00a3cc] text-white">
+              <FaMobileScreenButton size={32} />
+            </div>
             <div>
-              <div className="flex items-center gap-4">
-                <FaShieldHalved className="text-3xl text-[#00a3cc]" />
-                <h2 className="text-3xl font-black uppercase leading-tight tracking-tight sm:text-4xl">
-                  Sharing Protocol
-                </h2>
-              </div>
-
-              <div className="mt-8 space-y-6">
-                <div className="rounded-[28px] bg-white/10 p-5">
-                  <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7eddf4]">
-                    General Information
+              <h2 className="text-3xl font-black uppercase tracking-tight text-[#003358] sm:text-4xl">
+                Text Messaging
+              </h2>
+              <div className="mt-6 space-y-6 text-sm leading-8 text-[#003358]/80 sm:text-base">
+                <p>
+                  If you opt in to receive text messages from the Damarcus
+                  Offord campaign, your information will be used solely to send
+                  campaign-related communications.
+                </p>
+                <div className="rounded-2xl bg-white p-6 border border-[#bde4f7]">
+                  <p className="font-bold text-[#003358]">
+                    Text Messaging Opt-In Data:
                   </p>
-                  <p className="mt-3 text-sm leading-8 text-white/78">
-                    We do not share, sell, rent, or otherwise disclose your
-                    personal information to third parties except where required
-                    by law or where disclosure is necessary for campaign
-                    operations and compliance.
-                  </p>
-                </div>
-
-                <div className="rounded-[28px] bg-[#00a3cc] p-5 text-[#003358]">
-                  <p className="text-[10px] font-black uppercase tracking-[0.24em]">
-                    Sms Data Protection
-                  </p>
-                  <p className="mt-3 text-sm leading-8">
-                    We do not share or sell your text messaging opt in data,
-                    consent data, or related personal information with third
-                    parties unless required by law.
+                  <p className="mt-2">
+                    We will not share or sell your text messaging opt-in data,
+                    consent, or related personal information with any third
+                    parties, unless required by law. Message and data rates may
+                    apply. You can opt out at any time by replying STOP to any
+                    message.
                   </p>
                 </div>
               </div>
             </div>
-
-            <FaScaleBalanced className="hidden text-[7rem] text-white/8 lg:block" />
           </div>
         </section>
 
-        <section className="mt-8 grid gap-6 md:grid-cols-2">
-          <div className="rounded-[32px] bg-[#f7fcff] p-6 sm:p-8">
-            <h3 className="text-sm font-black uppercase tracking-[0.22em] text-[#007fa0]">
-              Data Security
-            </h3>
-            <p className="mt-4 text-sm leading-8 text-[#003358]/72">
-              We use industry-standard security measures to protect information
-              submitted through this website. However, no internet transmission
-              or storage system can be guaranteed to be completely secure.
-            </p>
-          </div>
-
-          <div className="rounded-[32px] bg-[#f7fcff] p-6 sm:p-8">
-            <h3 className="text-sm font-black uppercase tracking-[0.22em] text-[#007fa0]">
-              External Links
-            </h3>
-            <p className="mt-4 text-sm leading-8 text-[#003358]/72">
-              This website may contain links to third-party services or
-              websites. We are not responsible for the content, practices, or
-              privacy policies of those external sites.
-            </p>
-          </div>
-        </section>
-
-        <section className="mt-8 grid gap-6 md:grid-cols-2">
-          <div className="rounded-[32px] bg-white p-6 sm:p-8">
-            <div className="flex items-center gap-3">
-              <FaUserCheck className="text-[#00a3cc]" />
-              <h3 className="text-sm font-black uppercase tracking-[0.22em] text-[#007fa0]">
-                Minor Protection
+        {/* Section: Sharing & Security */}
+        <div className="mt-12 grid gap-8 md:grid-cols-2">
+          <div className="rounded-[40px] bg-[#f7fcff] border border-[#e3f2f9] p-8 md:p-10">
+            <div className="flex items-center gap-4 text-[#00a3cc]">
+              <FaShieldHalved size={24} />
+              <h3 className="text-xl font-black uppercase tracking-tight">
+                Sharing of Information
               </h3>
             </div>
-            <p className="mt-4 text-sm leading-8 text-[#003358]/72">
-              This site is not intended for children under the age of 13. We do
-              not knowingly collect personal information from minors, and if we
-              learn that such information has been collected, we will take steps
-              to remove it.
+            <p className="mt-6 text-sm leading-8 text-[#003358]/70">
+              We do not sell, rent, or trade your personal information. We may
+              share information with vendors and service providers who assist in
+              operating this website and campaign communications — those parties
+              are bound to use your data only in support of our campaign
+              activities. We may also disclose information if required by law or
+              in response to a valid legal process.
             </p>
           </div>
 
-          <div className="rounded-[32px] bg-[#cfefff] p-6 sm:p-8">
-            <div className="flex items-center gap-3">
-              <FaEnvelope className="text-[#00a3cc]" />
-              <h3 className="text-sm font-black uppercase tracking-[0.22em] text-[#007fa0]">
-                Contact And Updates
+          <div className="rounded-[40px] bg-white border border-slate-100 p-8 md:p-10 shadow-sm">
+            <div className="flex items-center gap-4 text-[#00a3cc]">
+              <FaLock size={24} />
+              <h3 className="text-xl font-black uppercase tracking-tight text-[#003358]">
+                Data Security
               </h3>
             </div>
-            <p className="mt-4 text-sm leading-8 text-[#003358]/72">
-              This policy may be updated from time to time by posting a revised
-              version on this website. If you have questions about this policy
-              or how your information is handled, please contact the campaign
-              directly.
+            <p className="mt-6 text-sm leading-8 text-[#003358]/70">
+              We take reasonable precautions to protect your information from
+              unauthorized access, disclosure, or misuse. No data transmission
+              over the internet is completely secure, but we use standard
+              practices to safeguard the information you provide.
             </p>
+          </div>
+        </div>
+
+        {/* Section: Your Choices */}
+        <section className="mt-12 rounded-[40px] bg-gradient-to-br from-[#003358] to-[#004a80] p-8 md:p-12 text-white">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-xl">
+              <h2 className="text-3xl font-black uppercase tracking-tight sm:text-4xl">
+                Your Choices
+              </h2>
+              <p className="mt-4 text-sm leading-8 text-white/70">
+                You may unsubscribe from email communications at any time by
+                clicking the unsubscribe link in any message. To opt out of text
+                messages, reply STOP. To request that your information be
+                removed from our records, contact us at the email address below.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <div className="rounded-3xl bg-white/10 p-8 backdrop-blur-md border border-white/10">
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#7eddf4]">
+                  Contact
+                </p>
+                <a
+                  href="mailto:info@votedamarcus.com"
+                  className="mt-2 block text-xl font-black text-[#00a3cc] hover:text-[#7eddf4] transition-colors sm:text-2xl"
+                >
+                  info@votedamarcus.com
+                </a>
+                <p className="mt-4 text-[10px] leading-relaxed text-white/50 max-w-[200px]">
+                  For questions about this policy or your information, contact
+                  us.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       </main>
@@ -252,7 +221,7 @@ const PrivacyPolicy: React.FC = () => {
       <footer className="px-6 pb-12 pt-12">
         <div className="mx-auto max-w-7xl border-t border-[#d6edf5] pt-8 text-center">
           <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#003358]/45">
-            Damarcus Offord Campaign Integrity Node 2026
+            Paid for by the Damarcus Offord Campaign
           </span>
         </div>
       </footer>

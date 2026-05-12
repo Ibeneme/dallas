@@ -72,7 +72,7 @@ const ElectionAlert: React.FC = () => {
           <div className="rounded-[32px] bg-[#f7fcff] border border-[#e3f2f9] p-8 md:p-10 lg:col-span-5">
             <div className="h-1.5 w-16 bg-[#00a3cc]" />
             <p className="mt-8 text-2xl font-black uppercase leading-tight tracking-tight sm:text-3xl">
-              Vote Anywhere in Dallas County.
+              Vote Anywhere 
             </p>
             <p className="mt-6 text-sm leading-8 text-[#003358]/70 sm:text-base">
               Dallas County utilizes a{" "}
