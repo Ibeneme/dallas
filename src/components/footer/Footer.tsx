@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
     { name: "Privacy Policy", path: "/privacy" },
   ];
 
-  const facebookUrl = "https://www.facebook.com/damarcus.offord";
+  const facebookUrl = "https://www.facebook.com/share/1CkPGR9r3q/?mibextid=wwXIfr";
 
   return (
     <footer className="relative overflow-hidden bg-[#003358] text-white">
