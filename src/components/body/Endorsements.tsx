@@ -193,7 +193,7 @@ const EndorsementsSection: React.FC = () => {
             </div>
 
             <div className="rounded-full bg-[#f7fcff] px-5 py-3 text-[11px] font-black uppercase tracking-[0.2em] text-[#007fa0]">
-              Total Endorsements: {filteredData.length}
+           Endorsed by hundreds of elected officials, precinct chairs, and community leaders
             </div>
           </div>
 
