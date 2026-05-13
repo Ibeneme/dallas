@@ -133,7 +133,7 @@ const ContactPage: React.FC = () => {
                 <h1 className="mt-4 text-5xl font-black uppercase leading-[0.9] tracking-tight md:text-7xl">
                   Join The
                   <br />
-                  <span className="text-[#00a3cc]">Phase.</span>
+                  <span className="text-[#00a3cc]">Movement.</span>
                 </h1>
               </div>
 
@@ -145,8 +145,8 @@ const ContactPage: React.FC = () => {
                   </span>
                 </div>
                 <p className="mt-4 text-sm leading-7 text-white/80">
-                  Route volunteer requests, event invitations, endorsements, and
-                  outreach through one campaign contact interface.
+                  Submit volunteer requests, event invitations, endorsements, and
+                  outreach through the submission form below.
                 </p>
               </div>
             </div>
@@ -157,7 +157,7 @@ const ContactPage: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-8">
             <section className="rounded-[28px] bg-[#cfefff] p-6 md:p-8">
               <h2 className="text-sm font-black uppercase tracking-[0.25em] text-[#007fa0]">
-                Objective Parameters
+                Volunteer Opportunities
               </h2>
 
               <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -212,130 +212,78 @@ const ContactPage: React.FC = () => {
 
             <section className="rounded-[28px] bg-[#cfefff] p-6 md:p-8">
               <h2 className="text-sm font-black uppercase tracking-[0.25em] text-[#007fa0]">
-                Registry Input
+                Contact Information
               </h2>
 
-              <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_320px]">
-                <div className="space-y-6">
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <GhostInput
-                      label="First Name"
-                      placeholder="Enter your first name"
-                      required
-                      value={formData.firstName}
-                      onChange={(v: string) =>
-                        handleInputChange("firstName", v)
-                      }
-                    />
-                    <GhostInput
-                      label="Last Name"
-                      placeholder="Enter your last name"
-                      required
-                      value={formData.lastName}
-                      onChange={(v: string) => handleInputChange("lastName", v)}
-                    />
-                    <GhostInput
-                      label="Email Address"
-                      placeholder="Enter your email address"
-                      required
-                      type="email"
-                      value={formData.email}
-                      onChange={(v: string) => handleInputChange("email", v)}
-                    />
-                    <GhostInput
-                      label="Phone Number Optional"
-                      placeholder="Enter your phone number"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(v: string) => handleInputChange("phone", v)}
-                    />
-                  </div>
-
-                  <label className="flex items-start gap-4 rounded-3xl bg-white p-4">
-                    <input
-                      type="checkbox"
-                      checked={formData.smsConsent}
-                      onChange={(e) =>
-                        handleInputChange("smsConsent", e.target.checked)
-                      }
-                      className="mt-1 h-4 w-4 accent-[#00a3cc]"
-                    />
-                    <span className="text-sm leading-6 text-[#003358]/80">
-                      By providing your telephone number and checking this box,
-                      you consent to receive calls and text messages. Message
-                      and data rates may apply. Message frequency may vary.
-                      Messaging may include requests for donation. Reply STOP to
-                      opt out and HELP for help.{" "}
-                      <Link
-                        to="/privacy"
-                        className="font-black uppercase text-[#007fa0]"
-                      >
-                        Privacy Policy
-                      </Link>
-                      .
-                    </span>
-                  </label>
+              <div className="mt-6 space-y-6">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <GhostInput
+                    label="First Name"
+                    placeholder="Enter your first name"
+                    required
+                    value={formData.firstName}
+                    onChange={(v: string) =>
+                      handleInputChange("firstName", v)
+                    }
+                  />
+                  <GhostInput
+                    label="Last Name"
+                    placeholder="Enter your last name"
+                    required
+                    value={formData.lastName}
+                    onChange={(v: string) => handleInputChange("lastName", v)}
+                  />
+                  <GhostInput
+                    label="Email Address"
+                    placeholder="Enter your email address"
+                    required
+                    type="email"
+                    value={formData.email}
+                    onChange={(v: string) => handleInputChange("email", v)}
+                  />
+                  <GhostInput
+                    label="Phone Number"
+                    placeholder="Enter your phone number"
+                    required
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(v: string) => handleInputChange("phone", v)}
+                  />
                 </div>
 
-                <div className="rounded-[28px] bg-[#003358] p-6 text-white">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#00446f] text-[#00a3cc]">
-                    <FaCubesStacked size={20} />
-                  </div>
-                  <p className="mt-4 text-[11px] font-black uppercase tracking-[0.28em] text-[#7eddf4]">
-                    Authentication 
-                  </p>
-                  <p className="mt-4 text-sm leading-7 text-white/80">
-                    All submitted data packets are processed through official
-                    campaign channels for secure review and response.
-                  </p>
-                </div>
+                <label className="flex items-start gap-4 rounded-3xl bg-white p-4">
+                  <input
+                    type="checkbox"
+                    checked={formData.smsConsent}
+                    onChange={(e) =>
+                      handleInputChange("smsConsent", e.target.checked)
+                    }
+                    className="mt-1 h-4 w-4 accent-[#00a3cc]"
+                  />
+                  <span className="text-sm leading-6 text-[#003358]/80">
+                    By providing your telephone number and checking this box,
+                    you consent to receive calls and text messages. Message
+                    and data rates may apply. Message frequency may vary.
+                    Messaging may include requests for donation. Reply STOP to
+                    opt out and HELP for help.{" "}
+                    <Link
+                      to="/privacy"
+                      className="font-black uppercase text-[#007fa0]"
+                    >
+                      Privacy Policy
+                    </Link>
+                    .
+                  </span>
+                </label>
               </div>
             </section>
 
             <section className="rounded-[28px] bg-[#cfefff] p-6 md:p-8">
               <h2 className="text-sm font-black uppercase tracking-[0.25em] text-[#007fa0]">
-                Locational Data
-              </h2>
-
-              <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                <GhostInput
-                  label="Street Address"
-                  placeholder="Enter your street address"
-                  value={formData.streetAddress}
-                  onChange={(v: string) =>
-                    handleInputChange("streetAddress", v)
-                  }
-                />
-                <GhostInput
-                  label="City"
-                  placeholder="Enter your city"
-                  value={formData.city}
-                  onChange={(v: string) => handleInputChange("city", v)}
-                />
-                <GhostInput
-                  label="State"
-                  placeholder="Enter your state"
-                  value={formData.state}
-                  onChange={(v: string) => handleInputChange("state", v)}
-                />
-                <GhostInput
-                  label="Zip Code"
-                  placeholder="Enter your zip code"
-                  value={formData.zipCode}
-                  onChange={(v: string) => handleInputChange("zipCode", v)}
-                />
-              </div>
-            </section>
-
-            <section className="rounded-[28px] bg-[#cfefff] p-6 md:p-8">
-              <h2 className="text-sm font-black uppercase tracking-[0.25em] text-[#007fa0]">
-                Communication Log
+                Message
               </h2>
 
               <div className="mt-6">
-                <label className="mb-3 block text-[11px] font-black uppercase tracking-[0.25em] text-[#007fa0]">
-                  Message Or Briefing
-                </label>
                 <textarea
                   rows={5}
                   value={formData.message}
