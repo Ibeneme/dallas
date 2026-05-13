@@ -11,10 +11,6 @@ type Submission = {
   email: string;
   phone: string | null;
   sms_consent: boolean;
-  street_address: string | null;
-  city: string | null;
-  state: string | null;
-  zip_code: string | null;
   message: string | null;
 };
 
@@ -39,7 +35,9 @@ const SubmissionsPage: React.FC = () => {
       while (hasMore) {
         const { data, error } = await supabase
           .from("contact_submissions")
-          .select("*")
+          .select(
+            "id, created_at, help_options, first_name, last_name, email, phone, sms_consent, message"
+          )
           .order("created_at", { ascending: false })
           .range(from, from + PAGE_SIZE - 1);
 
@@ -160,9 +158,10 @@ const SubmissionsPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#eaf9ff] px-6 py-10 text-[#003358]">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-8 rounded-[28px] bg-[#003358] p-8 text-white">
+    <div className="min-h-screen bg-[#eaf9ff] px-4 py-10 text-[#003358] sm:px-6">
+      <div className="mx-auto max-w-[1440px]">
+        {/* --- HEADER BLOCK --- */}
+        <div className="mb-8 rounded-[28px] bg-[#003358] p-6 text-white sm:p-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#7eddf4]">
@@ -181,14 +180,14 @@ const SubmissionsPage: React.FC = () => {
               <button
                 onClick={loadAllSubmissions}
                 disabled={isLoading}
-                className="rounded-full bg-white px-5 py-3 text-sm font-black uppercase text-[#003358] disabled:opacity-60"
+                className="rounded-full bg-white px-5 py-3 text-sm font-black uppercase text-[#003358] transition hover:bg-slate-100 disabled:opacity-60"
               >
                 {isLoading ? "Refreshing" : "Refresh"}
               </button>
 
               <button
                 onClick={handleSignOut}
-                className="rounded-full bg-[#00a3cc] px-5 py-3 text-sm font-black uppercase text-white"
+                className="rounded-full bg-[#00a3cc] px-5 py-3 text-sm font-black uppercase text-white transition hover:bg-[#008db0]"
               >
                 Sign Out
               </button>
@@ -230,95 +229,80 @@ const SubmissionsPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid gap-5">
-              {submissions.map((item) => {
-                const location = [
-                  item.street_address,
-                  item.city,
-                  item.state,
-                  item.zip_code,
-                ]
-                  .filter(Boolean)
-                  .join(", ");
-
-                return (
-                  <article
-                    key={item.id}
-                    className="rounded-[28px] bg-white p-6"
-                  >
-                    <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                      <div>
-                        <p className="text-[11px] font-black uppercase tracking-[0.28em] text-[#007fa0]">
-                          Submission #{item.id}
-                        </p>
-                        <h2 className="mt-2 text-2xl font-black uppercase tracking-tight">
-                          {item.first_name} {item.last_name}
-                        </h2>
-                        <p className="mt-2 text-sm text-[#003358]/65">
+            {/* --- TABLE LAYOUT CONTROLLER --- */}
+            <div className="rounded-[28px] bg-white shadow-xl shadow-slate-100 border border-slate-100 overflow-hidden">
+              {/* Native Horizontal Scroll Window for All Screen Profiles */}
+              <div className="w-full overflow-x-auto scrollbar-thin scrollbar-thumb-slate-200">
+                <table className="w-full min-w-[800px] text-left border-collapse table-fixed">
+                  <thead>
+                    <tr className="bg-slate-50 border-b border-slate-100 text-[11px] font-black uppercase tracking-wider text-[#007fa0]">
+                      <th className="py-5 px-6 w-1/5">Date & Time</th>
+                      <th className="py-5 px-6 w-1/5">Full Name</th>
+                      <th className="py-5 px-6 w-1/4">Contact Details</th>
+                      <th className="py-5 px-6 w-1/3">Message</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 text-sm">
+                    {submissions.map((item) => (
+                      <tr
+                        key={item.id}
+                        className="hover:bg-slate-50/50 transition-colors align-top"
+                      >
+                        {/* TIMESTAMP */}
+                        <td className="py-5 px-6 text-xs font-medium text-[#003358]/65 whitespace-nowrap">
                           {new Date(item.created_at).toLocaleString()}
-                        </p>
-                      </div>
+                        </td>
 
-                      <div className="flex flex-wrap gap-2">
-                        {item.help_options?.length ? (
-                          item.help_options.map((option) => (
-                            <span
-                              key={option}
-                              className="rounded-full bg-[#dff7ff] px-3 py-2 text-[11px] font-black uppercase tracking-[0.15em] text-[#007fa0]"
-                            >
-                              {option}
-                            </span>
-                          ))
-                        ) : (
-                          <span className="rounded-full bg-[#eef6fa] px-3 py-2 text-[11px] font-black uppercase tracking-[0.15em] text-[#6b7f8c]">
-                            No selection
-                          </span>
-                        )}
-                      </div>
-                    </div>
+                        {/* NAME */}
+                        <td className="py-5 px-6 font-black uppercase tracking-tight text-[#003358]">
+                          {item.first_name} {item.last_name}
+                        </td>
 
-                    <div className="mt-6 grid gap-4 md:grid-cols-2">
-                      <div className="rounded-3xl bg-[#f7fcff] p-4">
-                        <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#007fa0]">
-                          Contact Details
-                        </p>
-                        <div className="mt-3 space-y-2 text-sm">
-                          <p>
-                            <span className="font-black">Email:</span>{" "}
+                        {/* CONTACT INFO */}
+                        <td className="py-5 px-6 text-xs space-y-1 text-slate-600">
+                          <p className="break-all">
+                            <span className="font-bold text-[#007fa0]">
+                              Email:
+                            </span>{" "}
                             {item.email}
                           </p>
                           <p>
-                            <span className="font-black">Phone:</span>{" "}
-                            {item.phone || "Not provided"}
+                            <span className="font-bold text-[#007fa0]">
+                              Phone:
+                            </span>{" "}
+                            {item.phone || "None"}
                           </p>
                           <p>
-                            <span className="font-black">SMS Consent:</span>{" "}
-                            {item.sms_consent ? "Yes" : "No"}
+                            <span className="font-bold text-[#007fa0]">
+                              SMS Opt-In:
+                            </span>{" "}
+                            <span
+                              className={`font-semibold ${
+                                item.sms_consent
+                                  ? "text-emerald-600"
+                                  : "text-slate-400"
+                              }`}
+                            >
+                              {item.sms_consent ? "Yes" : "No"}
+                            </span>
                           </p>
-                        </div>
-                      </div>
+                        </td>
 
-                      <div className="rounded-3xl bg-[#f7fcff] p-4">
-                        <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#007fa0]">
-                          Location
-                        </p>
-                        <div className="mt-3 text-sm">
-                          {location || "Not provided"}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 rounded-3xl bg-[#f7fcff] p-4">
-                      <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#007fa0]">
-                        Message
-                      </p>
-                      <p className="mt-3 whitespace-pre-wrap text-sm leading-7">
-                        {item.message || "No message provided"}
-                      </p>
-                    </div>
-                  </article>
-                );
-              })}
+                        {/* MESSAGE */}
+                        <td className="py-5 px-6">
+                          <p className="whitespace-pre-wrap text-xs leading-relaxed text-[#003358]/85 pr-2">
+                            {item.message || (
+                              <span className="italic text-slate-300">
+                                No message context provided
+                              </span>
+                            )}
+                          </p>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </>
         )}
